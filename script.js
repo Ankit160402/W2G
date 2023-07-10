@@ -5,13 +5,12 @@ calculator.updateSettings({ expressionsCollapsed: true });
 
 
 elt.style.width = window.innerWidth+'px';
-elt.style.height = String(Number(window.innerHeight)*0.8)+'px';
+elt.style.height = String(Number(window.innerHeight)*0.85)+'px';
 calculator.resize();
 
-var x = 10
-var y = 10
-var space_length = 3
+const space_length = 3
 var validInput = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', '/']
+var color_code = 0
 
 function equations(eqn) {
     switch (eqn) {
@@ -112,6 +111,9 @@ const eqn_id = {
     "0": [49, 50, 51, 52]
 };
 
+function change_color(input_code){
+    color_code = input_code
+  }
 
 function validInput_check(input) {
     for (i = 0, len = input.length; i < len; i++) {
@@ -122,31 +124,48 @@ function validInput_check(input) {
     return true;
   };
 
+
 function plot(user_input) {
     let text = user_input.toUpperCase();
     
     if(validInput_check(text)) {
-        x = 10;
-        y = 10;
         calculator.setBlank()
+        no_line = text.split("/").length-1;
+        x = 10;
+        y = 10+(12*no_line);
+        
 
         for (let i = 0; i < text.length; i++) {
-
             if (text[i] == " ") { 
                 x = x + space_length
             }
             else if (text[i] == "/") {
-                console.log("new line")
                 y = y- 12
                 x = 10
             }
             else {
                 for (let j = 0; j < eqn_id[text[i]].length; j++) {
-                    calculator.setExpression({ latex: equations(eqn_id[text[i]][j]), color: Desmos.Colors.RED });
+                    switch( color_code ){
+                        case "0": calculator.setExpression({ latex: equations(eqn_id[text[i]][j])});  break;
+                        case "1": calculator.setExpression({ latex: equations(eqn_id[text[i]][j]), color: Desmos.Colors.RED }); break;
+                        case "2": calculator.setExpression({ latex: equations(eqn_id[text[i]][j]), color:  Desmos.Colors.BLUE}); break;
+                        case "3": calculator.setExpression({ latex: equations(eqn_id[text[i]][j]), color:  Desmos.Colors.GREEN}); break;
+                        case "4": calculator.setExpression({ latex: equations(eqn_id[text[i]][j]), color:  Desmos.Colors.PURPLE}); break;
+                        case "5": calculator.setExpression({ latex: equations(eqn_id[text[i]][j]), color:  Desmos.Colors.ORANGE}); break;
+                        case "6": calculator.setExpression({ latex: equations(eqn_id[text[i]][j]), color:  Desmos.Colors.BLACK}); break;
+                        default: alert("Something went wrong")
+                    }
                 }
                 x = x + 6
             }}
-        $('#input').val('');
+
+        // calculator.setMathBounds({
+        //     left: 0,
+        //     right: ,
+        //     bottom: y,
+        //     top: 10
+        //   });
+
     }else {
         alert('Only AlphaNum and "/" is accepted as an input')
     }

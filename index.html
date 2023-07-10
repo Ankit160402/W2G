@@ -44,7 +44,7 @@
                         <a href="https://www.linkedin.com/in/ankit69/" class="nav-link"> <i class="fa-brands fa-linkedin" style="color: white;"></i> </a>
                     </li>
                     <li class="nav-item">
-                        <a href="#" class="nav-link">Link</a>
+                        <a href="ankit141003@gmail.com" class="nav-link"> <i class="fa-solid fa-envelope" style="color: white;"></i> </a>
                     </li>
                 </ul>
             </div>
@@ -52,11 +52,28 @@
     </nav>
 
 
-    <div class="input">
-        <input type="text" class="form-control" id="input" placeholder="Use / for next line", onchange="plot(this.value)">
+    <div class="input_div bg-dark">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-6">
+                    <input type="text" class="form-control" id="transparent-input" placeholder='Enter Text to be Plotted (Use "/" for next line)'', onchange="plot(this.value)">
+                </div>
+                <div class="col-md-6">
+                    <select id="input" class="form-select" id="transparent-input" style="background-color: transparent; color: white;" aria-label="Default select example" onchange="change_color(this.value)">
+                        <option value=0 style="background-color: grey;" selected>Choose Color (Default: Random)</option>
+                        <option value=1 style="background-color: #c74440;">Red</option>
+                        <option value=2 style="background-color: #2d70b3;">Blue</option>
+                        <option value=3 style="background-color: #388c46;">Green</option>
+                        <option value=4 style="background-color: #6042a6;">Purple</option>
+                        <option value=5 style="background-color: #fa7e19;">Orange</option>
+                        <option value=6 style="background-color: black;">Black</option>
+                    </select>
+                </div>
+            </div>
+        </div>
     </div>
 
-    <div id="calculator" style="width: 600px; height: 400%;"></div>
+    <div id="calculator"></div>
     
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.0/jquery.min.js"></script>

@@ -2,16 +2,38 @@ h1 {
   align-self: center;
 }
 
+option {
+  color: white;
+}
+
+select {
+  margin: 0% 10%;
+  
+}
+
 .brand-text{
   font-family: 'Press Start 2P', cursive;
 }
 
-.input {
+.input_div {
   height: 10%;
   width: 100%;
 }
 
-#input {
+
+#transparent-input {
+  margin: auto;
   width: 80%;
-  margin: 1.75% 10%;
+  margin: 0% 10%;
+  background-color: transparent;
+  color: white;
+  border: 1px solid white;
+  margin-bottom: 2.5%;
+}
+#transparent-input::placeholder {
+  color: white;
+}
+
+.col-md-6 {
+  align-items: center;
 }
