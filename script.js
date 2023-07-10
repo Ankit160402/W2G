@@ -169,7 +169,7 @@ function plot(user_input) {
           });
 
     }else {
-        alert('Only AlphaNum and "/" is accepted as an input')
+        alert('Only AlphaNumericals and "/" is accepted as an input')
     }
 
 }
