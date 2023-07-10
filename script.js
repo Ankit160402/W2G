@@ -3,14 +3,16 @@ var calculator = Desmos.GraphingCalculator(elt);
 
 calculator.updateSettings({ expressionsCollapsed: true });
 
+const w = window.innerWidth;
+const h = window.innerHeight;
 
-elt.style.width = window.innerWidth+'px';
-elt.style.height = String(Number(window.innerHeight)*0.85)+'px';
+elt.style.width = w+'px';
+elt.style.height = String(Number(h)*0.85)+'px';
 calculator.resize();
 
 const space_length = 3
 var validInput = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', '/']
-var color_code = 0
+var color_code = "0"
 
 function equations(eqn) {
     switch (eqn) {
@@ -159,12 +161,12 @@ function plot(user_input) {
                 x = x + 6
             }}
 
-        // calculator.setMathBounds({
-        //     left: 0,
-        //     right: ,
-        //     bottom: y,
-        //     top: 10
-        //   });
+          calculator.setMathBounds({
+            left: 0,
+            right: (( (30+(12*no_line))* w)/(h*0.85)),
+            bottom: 0,
+            top: 30+(12*no_line)
+          });
 
     }else {
         alert('Only AlphaNum and "/" is accepted as an input')
