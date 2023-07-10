@@ -124,8 +124,8 @@ function validInput_check(input) {
 
 function plot(user_input) {
     let text = user_input.toUpperCase();
+    
     if(validInput_check(text)) {
-        
         x = 10;
         y = 10;
         calculator.setBlank()
@@ -146,11 +146,11 @@ function plot(user_input) {
                 }
                 x = x + 6
             }}
+        $('#input').val('');
     }else {
         alert('Only AlphaNum and "/" is accepted as an input')
     }
 
-    
 }
 
 
