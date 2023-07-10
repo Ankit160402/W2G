@@ -1,3 +1,17 @@
-.container {
-  margin: auto;
+h1 {
+  align-self: center;
+}
+
+.brand-text{
+  font-family: 'Press Start 2P', cursive;
+}
+
+.input {
+  height: 10%;
+  width: 100%;
+}
+
+#input {
+  width: 80%;
+  margin: 1.75% 10%;
 }

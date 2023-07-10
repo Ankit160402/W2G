@@ -1,11 +1,17 @@
 var elt = document.getElementById('calculator');
 var calculator = Desmos.GraphingCalculator(elt);
 
-calculator.updateSettings({ expressionsCollapsed: true })
+calculator.updateSettings({ expressionsCollapsed: true });
+
+
+elt.style.width = window.innerWidth+'px';
+elt.style.height = String(Number(window.innerHeight)*0.8)+'px';
+calculator.resize();
 
 var x = 10
 var y = 10
 var space_length = 3
+var validInput = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L', 'M', 'N', 'O', 'P', 'Q', 'R', 'S', 'T', 'U', 'V', 'W', 'X', 'Y', 'Z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ' ', '/']
 
 function equations(eqn) {
     switch (eqn) {
@@ -64,10 +70,8 @@ function equations(eqn) {
         default:
             alert("Switch Case Not Available")
             return ''
-
     }
 }
-calculator.setBlank()
 
 const eqn_id = {
     A: [1, 2, 3],
@@ -108,43 +112,45 @@ const eqn_id = {
     "0": [49, 50, 51, 52]
 };
 
-// function set_viewport(left,right,top,bottom){
-    
-// }
-// function equations(x,y) {
-//     return `(x- ${x} )=0.25(y- ${y} )\\left\\{${y}<=y<=${y+10}\\right\\}`
-// };
+
+function validInput_check(input) {
+    for (i = 0, len = input.length; i < len; i++) {
+      if (!(validInput.includes(input[i]))) { 
+        return false;
+      }
+    }
+    return true;
+  };
+
 function plot(user_input) {
     let text = user_input.toUpperCase();
-    x = 10;
-    y = 10;
-    calculator.setBlank()
+    if(validInput_check(text)) {
+        
+        x = 10;
+        y = 10;
+        calculator.setBlank()
 
-    for (let i = 0; i < text.length; i++) {
+        for (let i = 0; i < text.length; i++) {
 
-        if (text[i] == " ") { 
-            x = x + space_length
-        }
-        else if (text[i] == "/") {
-            y = y- 12
-        } {
-            for (let j = 0; j < eqn_id[text[i]].length; j++) {
-                calculator.setExpression({ latex: equations(eqn_id[text[i]][j]), color: Desmos.Colors.BLACK });
+            if (text[i] == " ") { 
+                x = x + space_length
             }
-            x = x + 6
-        }
+            else if (text[i] == "/") {
+                console.log("new line")
+                y = y- 12
+                x = 10
+            }
+            else {
+                for (let j = 0; j < eqn_id[text[i]].length; j++) {
+                    calculator.setExpression({ latex: equations(eqn_id[text[i]][j]), color: Desmos.Colors.RED });
+                }
+                x = x + 6
+            }}
+    }else {
+        alert('Only AlphaNum and "/" is accepted as an input')
     }
-    calculator.asyncScreenshot().then(response => {
-        const graphId = response.snapshotKey;
-        const shareLink = `https://www.desmos.com/calculator/${graphId}`;
-      
-        console.log(shareLink);
-      }).catch(error => {
-        console.error("Failed to generate the share link.", error);
-      });
 
     
-  
 }
 
 
