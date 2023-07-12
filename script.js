@@ -63,7 +63,7 @@ function equations(eqn) {
         case 45: return `((x-${x + 2.5})^2)+((y-${y + 7.5})^2)=6.25`; break;
         case 46: return `((x-${x + 2.5})^2)+((y-${y + 2.5})^2)=6.25`; break;
         case 47: return `(((x-${x + 2.5})^2)/6.25)+(((y-${y + 7})^2)/9)=1`; break;
-        case 48: return `(((x-${x + 3})^2)/9)+(((y-${y + 7})^2)/49)=1   \\left\\{y<=${y + 7}\\right\\}\\left\\{x<=${x + 5}\\right\\}`; break;
+        case 48: return `(((x-${x + 2})^2)/9)+(((y-${y + 7})^2)/49)=1   \\left\\{y<=${y + 7}\\right\\}\\left\\{x>=${x}\\right\\}`; break;
         case 49: return `(x-${x})=0   \\left\\{${y + 2.5}<=y<=${y + 7.5}\\right\\}`; break;
         case 50: return `(x-${x})=5   \\left\\{${y + 2.5}<=y<=${y + 7.5}\\right\\}`; break;
         case 51: return `((x-${x + 2.5})^2)+((y-${y + 7.5})^2)=6.25   \\left\\{y>=${y + 7.5}\\right\\}`; break;
