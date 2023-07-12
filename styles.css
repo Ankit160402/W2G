@@ -13,6 +13,10 @@ select {
 
 .brand-text{
   font-family: 'Press Start 2P', cursive;
+  color: white;
+  text-decoration:none;
+  font-size: 150%;
+  margin: 0% 2%;
 }
 
 .input_div {
