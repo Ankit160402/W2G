@@ -24,6 +24,9 @@ select {
   width: 100%;
 }
 
+.navbar-nav {
+  margin: 0% 2%;
+}
 
 #transparent-input {
   margin: auto;
